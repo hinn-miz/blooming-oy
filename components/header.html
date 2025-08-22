@@ -1,0 +1,56 @@
+<header class="site-header">
+  <div class="header-container">
+    <!-- 로고 -->
+    <div class="logo">
+      <a href="/">
+        <img src="/assets/images/logo_color.png" alt="온양온천역 벽산 블루밍 센트럴시티" style="height:45px;width:auto;max-width:100%;" />
+      </a>
+    </div>
+
+    <!-- 내비게이션 -->
+    <nav class="main-nav" id="mainNav" aria-label="주요 메뉴">
+      <ul>
+        <li><a href="/about.html"><strong>사업개요</strong></a></li>
+        <li><a href="/premium.html"><strong>프리미엄</strong></a></li>
+        <li><a href="/location.html"><strong>입지안내</strong></a></li>
+        <li><a href="/complex.html"><strong>단지안내</strong></a></li>
+
+        <li class="submenu">
+          <button type="button" class="submenu-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="typesDropdown">
+            <strong>평면안내</strong>
+          </button>
+          <ul class="dropdown" id="typesDropdown" role="menu" aria-label="평면안내 하위메뉴">
+            <li><a href="/types-block1.html" role="menuitem">1블럭</a></li>
+            <li><a href="/types-block2.html" role="menuitem">2블럭</a></li>
+          </ul>
+        </li>
+
+        <li><a href="/preview.html"><strong>인테리어</strong></a></li>
+        <li><a href="/form.html"><strong>문의하기</strong></a></li>
+      </ul>
+    </nav>
+
+    <!-- 대표번호 -->
+    <div class="contact-info">
+      <a href="tel:16666093" class="call-button"><strong>1666-6093</strong></a>
+    </div>
+
+    <!-- 햄버거 -->
+    <button class="menu-toggle" id="menuToggle" aria-label="메뉴 열기" aria-controls="mainNav" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<!-- 스크립트: 메뉴 토글만. (드롭다운은 데스크톱 hover, 모바일은 CSS로 항상 펼침) -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var menuToggle = document.getElementById("menuToggle");
+  var mainNav = document.getElementById("mainNav");
+  if (!menuToggle || !mainNav) return;
+
+  menuToggle.addEventListener("click", function () {
+    var willOpen = !mainNav.classList.contains("active");
+    mainNav.classList.toggle("active");
+    menuToggle.setAttribute("aria-expanded", String(willOpen));
+  });
+});
+</script>

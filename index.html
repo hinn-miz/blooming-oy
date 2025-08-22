@@ -1,0 +1,367 @@
+jpgpng<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>온양온천역 벽산 블루밍 센트럴시티</title>
+
+  <!-- SNS 기본 -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="온양온천역 벽산 블루밍 센트럴시티" />
+  <meta name="twitter:description" content="온양온천역세권 대단지 민간임대아파트 벽산 블루밍 센트럴시티" />
+  <meta name="twitter:image" content="https://elife-edaegu.netlify.app/assets/images/index/og-image.png" />
+
+  <!-- 스타일 및 폰트 -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- 파비콘 -->
+<link rel="icon" href="/assets/images/favicon.svg" type="image/png" />
+
+<!-- 메타태그 -->
+<meta name="description" content="온양온천역세권 대단지 민간임대아파트 벽산 블루밍 센트럴시티.">
+<meta name="keywords" content="온양온천역세권 대단지 민간임대아파트 벽산 블루밍 센트럴시티">
+<meta name="author" content="온양온천역 벽산 블루밍 센트럴시티">
+
+<!-- 대표 이미지 -->
+<meta property="og:image" content="https://elife-edaegu.netlify.app/assets/images/index/og-image.png" />
+<meta property="og:title" content="온양온천역 벽산 블루밍 센트럴시티" />
+<meta property="og:description" content="온양온천역세권 대단지 민간임대아파트 벽산 블루밍 센트럴시티" />
+<meta property="og:url" content="https://elife-edaegu.netlify.app//" />
+<meta property="og:type" content="website" />
+
+
+  <style>
+    @font-face {
+      font-family: 'ShillaCultureB';
+      src: url('/assets/fonts/Shilla_Culture(B).ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    /* ✅ Hero Section 스타일 */
+    .hero {
+      position: relative;
+      height: 90vh;
+      background: url('/assets/images/index/hero.png') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transform: scale(1.05);
+      opacity: 0;
+      transition: all 2s ease;
+    }
+
+    .hero.visible {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      color: white;
+      text-align: center;
+      max-width: 90vw;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1.5s ease 0.6s;
+    }
+
+    .hero.visible .hero-inner {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-family: 'ShillaCultureB', sans-serif;
+      font-size: 4rem;
+      margin-bottom: 0.1rem;
+      font-weight: normal;
+      color: #fff;
+    }
+
+    .hero .subtitle {
+      font-family: 'ShillaCultureB', sans-serif;
+      font-size: 4rem;
+      font-weight: 400;
+      margin-top: 0; /* 👉 기본 간격 제거 */
+      color: #fff;
+    }
+    .subtext .highlight {
+      color:#0B1E3B; /* 원하는 색상으로 변경하세요 */
+    }
+
+    .hero .subtext {
+      font-size: 1.6rem;
+      margin-top: 1rem;
+      color: #fff;
+    }
+
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .hero .subtitle { font-size: 2rem; }
+      .hero .subtext { font-size: 1.3rem; }
+    }
+
+    .showcase-fullscreen {
+      width: 100%;
+      padding: 3rem 1rem;
+      box-sizing: border-box;
+    }
+
+    .showcase-image-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 5rem;
+      margin-top: 5rem;
+    }
+
+    .showcase-image-wrapper img {
+      display: block;
+      margin: 0 auto;
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1.2s ease;
+    }
+
+    .fade-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 { transition-delay: 0.2s; }
+    .delay-2 { transition-delay: 0.4s; }
+    .delay-3 { transition-delay: 0.6s; }
+
+    .desktop-only { display: block; }
+    .mobile-only { display: none; }
+
+    @media (max-width: 768px) {
+      .desktop-only { display: none; }
+      .mobile-only { display: block; }
+    }
+
+    /* ✅ 팝업 레이어 스타일 */
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .popup-box {
+      position: relative;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      padding: 1rem;
+      text-align: center;
+      max-width: 90%;
+      width: 400px;
+      animation: popupFade 0.3s ease-out;
+    }
+
+    .popup-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .popup-actions {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    @keyframes popupFade {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <!-- ✅ 헤더 불러오기 -->
+  <div id="header-include"></div>
+
+  <!-- ✅ 메인 콘텐츠 -->
+  <main class="main-section">
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>대단지 민간임대아파트 </h1>
+        <p class="subtitle">59㎡ 1억대 / 84㎡ 2억대 !</p>
+        <p class="subtext"><span class="highlight"><strong>온양온천역</strong></span> 벽산블루밍 센트럴시티</p>
+      </div>
+    </section>
+
+    <section class="showcase-fullscreen">
+      <div class="showcase-image-wrapper desktop-only">
+        <img src="./assets/images/index/showcase1.png" class="fade-item delay-1" alt="포인트1">
+      </div>
+
+      <!-- 데스크탑용 이미지 -->
+      <div class="showcase-image-wrapper desktop-only">
+        <img src="./assets/images/index/showcase2.png" class="fade-item delay-2" alt="포인트2">
+      </div>
+      <div class="showcase-image-wrapper desktop-only">
+        <img src="./assets/images/index/showcase3.png" class="fade-item delay-3" alt="포인트3">
+      </div>
+
+      <!-- 모바일용 이미지 -->
+      <div class="showcase-image-wrapper mobile-only">
+        <img src="./assets/images/index/showcase1_m.png" class="fade-item delay-1" alt="모바일용 포인트1">
+      </div>
+           <div class="showcase-image-wrapper mobile-only">
+        <img src="./assets/images/index/showcase2_m.png" class="fade-item delay-2" alt="모바일용 포인트3">
+      </div>
+      <div class="showcase-image-wrapper mobile-only">
+        <img src="./assets/images/index/showcase3_m.png" class="fade-item delay-3" alt="모바일용 포인트3">
+      </div>
+    </section>
+  </main>
+
+  <!-- ✅ 푸터 불러오기 -->
+  <div id="footer-include"></div>
+
+  <!-- ✅ 스크립트: 컴포넌트 로딩 및 애니메이션 + 햄버거 메뉴 -->
+  <script>
+    // ✅ 공통 컴포넌트(header/footer/플로팅 버튼) 비동기 로딩
+    async function loadComponent(id, path, callback) {
+      try {
+        const res = await fetch(path);
+        if (!res.ok) throw new Error("Fetch failed");
+        const html = await res.text();
+        document.getElementById(id).innerHTML = html;
+        if (typeof callback === "function") callback();
+      } catch (err) {
+        console.error(`${path} 불러오기 실패:`, err);
+      }
+    }
+
+    // ✅ 햄버거 메뉴 바인딩 함수
+    function bindMenuToggle() {
+      const menuToggle = document.getElementById("menuToggle");
+      const mainNav = document.getElementById("mainNav");
+
+      if (menuToggle && mainNav) {
+        menuToggle.addEventListener("click", () => {
+          mainNav.classList.toggle("active");
+        });
+      }
+    }
+
+    // ✅ 페이지 로드시 실행
+    document.addEventListener("DOMContentLoaded", () => {
+      loadComponent("header-include", "/components/header.html", bindMenuToggle);
+      loadComponent("footer-include", "/components/footer.html");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.fade-item').forEach(el => observer.observe(el));
+
+      const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            heroObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      document.querySelectorAll('.hero').forEach(el => heroObserver.observe(el));
+    });
+
+function closePopup(popupId, cookieName) {
+  const checkbox = document.querySelector(`#${popupId} input[type="checkbox"]`);
+  if (checkbox && checkbox.checked) {
+    const expiry = new Date();
+    expiry.setDate(expiry.getDate() + 1);
+    document.cookie = `${cookieName}=true; path=/; expires=${expiry.toUTCString()}`;
+  }
+  document.getElementById(popupId).style.display = "none";
+}
+
+function checkPopupCookie(popupId, cookieName) {
+  if (!document.cookie.includes(`${cookieName}=true`)) {
+    document.getElementById(popupId).style.display = "flex";
+  }
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  checkPopupCookie("popupModal", "hidePopup");
+  checkPopupCookie("popupModal2", "hidePopup2"); // ✅ 두 번째 팝업도 체크
+});
+  </script>
+  <!-- ✅ 플로팅 버튼 -->
+<a href="/form.html" class="floating-btn">방문예약</a>
+
+<!-- 모달 팝업 -->
+<!-- ✅ 팝업 1 -->
+<div class="popup-overlay" id="popupModal" style="display: none;">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup('popupModal', 'hidePopup1', 'hideToday')">✕</button>
+    <a href="/form.html">
+      <img src="./assets/images/popup-banner.png" alt="팝업 이미지" class="popup-image">
+    </a>
+    <div class="popup-actions">
+      <label><input type="checkbox" id="hideToday" /> 오늘 하루 보지 않기</label>
+      <button onclick="closePopup('popupModal', 'hidePopup1', 'hideToday')">닫기</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ✅ 팝업 2 -->
+<div class="popup-overlay" id="popupModal2" style="display: none;">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup('popupModal2', 'hidePopup2', 'hideToday2')">✕</button>
+    <a href="/form.html">
+      <img src="./assets/images/popup-banner2.png" alt="팝업 이미지2" class="popup-image">
+    </a>
+    <div class="popup-actions">
+      <label><input type="checkbox" id="hideToday2" /> 오늘 하루 보지 않기</label>
+      <button onclick="closePopup('popupModal2', 'hidePopup2', 'hideToday2')">닫기</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
