@@ -16,23 +16,25 @@
       .mobile-only { display: block; }
     }
 
-    /* ✅ Layout Shift 방지를 위한 Wrapper 추가 */
+    /* ✅ 비율 강제 고정 및 덮어쓰기 속성을 우아하게 지워버린 것이와요 */
     .image-wrapper {
       position: relative;
       width: 100%;
-      /* 배경색 추가 (로딩 시 빈 공간 표시) */
       background-color: #f0f0f0; 
       border-radius: 12px;
       margin-bottom: 2rem;
       overflow: hidden;
-      /* 중요: 실제 이미지 비율에 맞춰 수정하세요. (예: 가로/세로) */
-      aspect-ratio: 16 / 9; 
+    }
+
+    .image-wrapper picture {
+      display: block;
+      width: 100%;
+      height: auto;
     }
 
     .image-wrapper img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto; /* ✅ 원본 비율을 위해 auto로 변경한 것이와요 */
       display: block;
     }
 
@@ -64,9 +66,8 @@
         <div class="image-wrapper fade-item delay-1">
           <picture>
             <source srcset="/assets/images/about/about1.webp" type="image/webp">
-            <!-- fallback용 이미지(선택사항)이 필요하다면 아래 src를 png로 유지해도 됩니다.
-                 만약 완전히 webp로만 교체했다면 아래 img src도 webp로 수정하세요. -->
-            <img src="/assets/images/about/about1.webp" alt="단지 이미지1" loading="lazy">
+            <!-- ✅ 백업 이미지는 반드시 png나 jpg여야 하는 것이와요 -->
+            <img src="/assets/images/about/about1.png" alt="단지 이미지1" loading="lazy">
           </picture>
         </div>
 
@@ -74,7 +75,7 @@
         <div class="image-wrapper fade-item delay-2">
           <picture>
             <source srcset="/assets/images/about/about2.webp" type="image/webp">
-            <img src="/assets/images/about/about2.webp" alt="단지 이미지2" loading="lazy">
+            <img src="/assets/images/about/about2.png" alt="단지 이미지2" loading="lazy">
           </picture>
         </div>
 
