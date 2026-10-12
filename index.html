@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>온양온천역 벽산 블루밍 센트럴시티</title>
+
+  <!-- ✅ Hero Image Preloading (LCP 최적화) -->
+  <link rel="preload" href="/assets/images/index/hero.webp" as="image" type="image/webp">
+  <link rel="preload" href="/assets/images/index/hero.png" as="image" type="image/png">
+
+  <!-- SNS 기본 -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="온양온천역 벽산 블루밍 센트럴시티" />
+  <meta name="twitter:description" content="온양온천역세권 대단지 민간임대아파트 벽산 블루밍 센트럴시티" />
+  <meta name="twitter:image" content="https://blooming-oy.netlify.app/assets/images/index/og-image.png" />
+
+  <!-- 스타일 및 폰트 -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- 파비콘 -->
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml" />
+
+  <!-- 메타태그 -->
+  <meta name="description" content="온양온천역세권 대단지 민간임대아파트 벽산 블루밍 센트럴시티.">
+  <meta name="keywords" content="온양온천역세권 대단지 민간임대아파트 벽산 블루밍 센트럴시티">
+  <meta name="author" content="온양온천역 벽산 블루밍 센트럴시티">
+
+  <!-- 대표 이미지 -->
+  <meta property="og:image" content="https://blooming-oy.netlify.app/assets/images/index/og-image.png" />
+  <meta property="og:title" content="온양온천역 벽산 블루밍 센트럴시티" />
+  <meta property="og:description" content="온양온천역세권 대단지 민간임대아파트 벽산 블루밍 센트럴시티" />
+  <meta property="og:url" content="https://blooming-oy.netlify.app//" />
+  <meta property="og:type" content="website" />
+
+  <style>
+    @font-face {
+      font-family: 'ShillaCultureB';
+      src: url('/assets/fonts/Shilla_Culture(B).ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    /* ✅ Hero Section 스타일 */
+    .hero {
+      position: relative;
+      height: 90vh;
+      background: url('/assets/images/index/hero.webp') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transform: scale(1.05);
+      opacity: 0;
+      transition: all 2s ease;
+    }
+
+    .no-webp .hero {
+      background: url('/assets/images/index/hero.png') no-repeat center center/cover;
+    }
+
+    .hero.visible {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      color: white;
+      text-align: center;
+      max-width: 90vw;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1.5s ease 0.6s;
+    }
+
+    .hero.visible .hero-inner {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-family: 'ShillaCultureB', sans-serif;
+      font-size: 4rem;
+      margin-bottom: 0.1rem;
+      font-weight: normal;
+      color: #fff;
+    }
+
+    .hero .subtitle {
+      font-family: 'ShillaCultureB', sans-serif;
+      font-size: 4rem;
+      font-weight: 400;
+      margin-top: 0;
+      color: #fff;
+    }
+
+    .highlight-orange {
+      font-size: 2.2rem;
+      margin-top: 1rem;
+      color: #FF6B00; 
+      font-weight: 700;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8), 0 0 4px rgba(0, 0, 0, 0.5); 
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      .hero .subtitle { font-size: 2.5rem; }
+      .highlight-orange { font-size: 1.6rem; }
+    }
+
+    /* ✅ 팝업 레이어 스타일 */
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .popup-box {
+      position: relative;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      padding: 1rem;
+      text-align: center;
+      max-width: 90%;
+      width: 400px;
+      animation: popupFade 0.3s ease-out;
+    }
+
+    .popup-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .popup-actions {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    @keyframes popupFade {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+  </style>
+
+  <script>
+    function checkWebP(callback) {
+      var img = new Image();
+      img.onload = function () {
+        var result = (img.width > 0) && (img.height > 0);
+        callback(result);
+      };
+      img.onerror = function () {
+        callback(false);
+      };
+      img.src = "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA";
+    }
+
+    checkWebP(function (support) {
+      if (!support) {
+        document.documentElement.classList.add('no-webp');
+      }
+    });
+  </script>
+</head>
+<body>
+  <div id="header-include"></div>
+
+  <main class="main-section">
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>10년 민간임대</h1>
+        <p class="subtitle">2억대부터~</p>
+        <p class="highlight-orange">온양온천역 블루밍</p>
+      </div>
+    </section>
+
+    <section class="showcase-fullscreen">
+      <!-- 데스크탑용 이미지 -->
+      <div class="showcase-image-wrapper desktop-only">
+        <picture>
+          <source srcset="./assets/images/index/showcase1.webp" type="image/webp">
+          <img src="./assets/images/index/showcase1.png" class="fade-item delay-1" alt="데스크탑 포인트1" loading="lazy">
+        </picture>
+      </div>
+      <div class="showcase-image-wrapper desktop-only">
+        <picture>
+          <source srcset="./assets/images/index/showcase2.webp" type="image/webp">
+          <img src="./assets/images/index/showcase2.png" class="fade-item delay-2" alt="데스크탑 포인트2" loading="lazy">
+        </picture>
+      </div>
+      <div class="showcase-image-wrapper desktop-only">
+        <picture>
+          <source srcset="./assets/images/index/showcase3.webp" type="image/webp">
+          <img src="./assets/images/index/showcase3.png" class="fade-item delay-3" alt="데스크탑 포인트3" loading="lazy">
+        </picture>
+      </div>
+
+      <!-- 모바일용 이미지 -->
+      <div class="showcase-image-wrapper mobile-only">
+         <picture>
+          <source srcset="./assets/images/index/showcase1_m.webp" type="image/webp">
+          <img src="./assets/images/index/showcase1_m.png" class="fade-item delay-1" alt="모바일용 포인트1" loading="lazy">
+        </picture>
+      </div>
+      <div class="showcase-image-wrapper mobile-only">
+        <picture>
+          <source srcset="./assets/images/index/showcase2_m.webp" type="image/webp">
+          <img src="./assets/images/index/showcase2_m.png" class="fade-item delay-2" alt="모바일용 포인트2" loading="lazy">
+        </picture>
+      </div>
+      <div class="showcase-image-wrapper mobile-only">
+        <picture>
+          <source srcset="./assets/images/index/showcase3_m.webp" type="image/webp">
+          <img src="./assets/images/index/showcase3_m.png" class="fade-item delay-3" alt="모바일용 포인트3" loading="lazy">
+        </picture>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-include"></div>
+
+  <script>
+    async function loadComponent(id, path, callback) {
+      try {
+        const res = await fetch(path);
+        if (!res.ok) throw new Error("Fetch failed");
+        const html = await res.text();
+        document.getElementById(id).innerHTML = html;
+        if (typeof callback === "function") callback();
+      } catch (err) {
+        console.error(`${path} 불러오기 실패:`, err);
+      }
+    }
+
+    function bindMenuToggle() {
+      const menuToggle = document.getElementById("menuToggle");
+      const mainNav = document.getElementById("mainNav");
+
+      if (menuToggle && mainNav) {
+        menuToggle.addEventListener("click", () => {
+          mainNav.classList.toggle("active");
+        });
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadComponent("header-include", "/components/header.html", bindMenuToggle);
+      loadComponent("footer-include", "/components/footer.html");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.fade-item').forEach(el => observer.observe(el));
+
+      const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            heroObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      document.querySelectorAll('.hero').forEach(el => heroObserver.observe(el));
+    });
+
+    /* ✅ 팝업을 개별적으로 닫고, 둘 다 닫히면 오버레이를 숨기는 진정한 귀족의 스크립트인 것이와요 */
+    function closePopupSingle(boxId, cookieName, checkboxId) {
+      const checkbox = document.getElementById(checkboxId);
+      if (checkbox && checkbox.checked) {
+        const expiry = new Date();
+        expiry.setDate(expiry.getDate() + 1);
+        document.cookie = `${cookieName}=true; path=/; expires=${expiry.toUTCString()}`;
+      }
+      
+      // 해당 팝업 박스만 먼저 숨김
+      document.getElementById(boxId).style.display = "none";
+      
+      // 두 팝업이 모두 숨겨졌는지 확인하고 배경(오버레이)도 숨김
+      const box1 = document.getElementById("popupBox1");
+      const box2 = document.getElementById("popupBox2");
+      const overlay = document.getElementById("popupOverlay");
+      
+      if ((!box1 || box1.style.display === "none") && (!box2 || box2.style.display === "none")) {
+        overlay.style.display = "none";
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const show1 = !document.cookie.includes("hidePopup1=true");
+      const show2 = !document.cookie.includes("hidePopup2=true");
+      const overlay = document.getElementById("popupOverlay");
+      const box1 = document.getElementById("popupBox1");
+      const box2 = document.getElementById("popupBox2");
+
+      // 하나라도 켜져 있어야 한다면 배경 오버레이를 띄움
+      if (show1 || show2) {
+        overlay.style.display = "flex";
+      }
+      // 쿠키가 있어서 숨겨야 하는 팝업은 개별적으로 끔
+      if (!show1 && box1) {
+        box1.style.display = "none";
+      }
+      if (!show2 && box2) {
+        box2.style.display = "none";
+      }
+    });
+  </script>
+
+  <a href="/form.html" class="floating-btn">방문예약</a>
+
+  <!-- ✅ 통합 팝업 레이어 (오버레이 하나에 두 개의 상자를 나란히 배치한 것이와요) -->
+  <div class="popup-overlay" id="popupOverlay" style="display: none; gap: 20px; flex-wrap: wrap;">
+    
+    <!-- 팝업 1 -->
+    <div class="popup-box" id="popupBox1">
+      <button class="popup-close" onclick="closePopupSingle('popupBox1', 'hidePopup1', 'hideToday1')">✕</button>
+      <a href="/form.html">
+        <picture>
+          <source srcset="./assets/images/popup-banner.webp" type="image/webp">
+          <img src="./assets/images/popup-banner.png" alt="팝업 이미지" class="popup-image">
+        </picture>
+      </a>
+      <div class="popup-actions">
+        <label><input type="checkbox" id="hideToday1" /> 오늘 하루 보지 않기</label>
+        <button onclick="closePopupSingle('popupBox1', 'hidePopup1', 'hideToday1')">닫기</button>
+      </div>
+    </div>
+
+    <!-- 팝업 2 -->
+    <div class="popup-box" id="popupBox2">
+      <button class="popup-close" onclick="closePopupSingle('popupBox2', 'hidePopup2', 'hideToday2')">✕</button>
+      <a href="/form.html">
+        <picture>
+          <source srcset="./assets/images/popup-banner2.webp" type="image/webp">
+          <img src="./assets/images/popup-banner2.png" alt="팝업 이미지2" class="popup-image">
+        </picture>
+      </a>
+      <div class="popup-actions">
+        <label><input type="checkbox" id="hideToday2" /> 오늘 하루 보지 않기</label>
+        <button onclick="closePopupSingle('popupBox2', 'hidePopup2', 'hideToday2')">닫기</button>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://blooming-oy.netlify.app/sitemap.xml
